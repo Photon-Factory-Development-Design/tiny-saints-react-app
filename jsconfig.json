@@ -1,9 +1,6 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "es2016",
-        "jsx": "preserve",
-        "checkJs": true,
+        "experimentalDecorators": true,
         "baseUrl": "./src"
     },
     "exclude": ["node_modules", "**/node_modules/*"]

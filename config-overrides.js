@@ -1,4 +1,6 @@
  const webpack = require("webpack");
+ const { addDecoratorsLegacy } = require('customize-cra');
+
  console.log( new webpack.optimize.LimitChunkCountPlugin({
                 maxChunks: 1,
             }));
@@ -18,5 +20,6 @@
         },
         runtimeChunk: false,
     }
+    addDecoratorsLegacy();
     return config;
 };
