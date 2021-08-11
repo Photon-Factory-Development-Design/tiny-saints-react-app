@@ -1,0 +1,44 @@
+{
+  "name": "airtable-shopify",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "airtable": "^0.10.1",
+    "axios": "^0.21.1",
+    "react": "^17.0.1",
+    "react-app-rewired": "^2.1.8",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-app-rewired build && npm run build-rename",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build-rename": "npm run build-rename-js && npm run build-rename-css",
+    "build-rename-js": "renamer --find \"/main\\.[^\\.]+\\.chunk.js/\" --replace 'main.js' build/static/js/*.js",
+    "build-rename-css": "renamer  --find \"/main\\.[^\\.]+\\.css/\" --replace main.css build/static/css/*.css"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
