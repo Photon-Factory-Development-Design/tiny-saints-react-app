@@ -6,14 +6,26 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 import { Provider } from 'mobx-react';
 
-ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('product-logos')
-);
+if (document.getElementById('organizations-table')) {
+    ReactDOM.render(
+        <React.StrictMode>
+            <Provider store={store}>
+                <App type="organizations" />
+            </Provider>
+        </React.StrictMode>,
+        document.getElementById('organizations-table')
+    );
+}
+if (document.getElementById('orders-table')) {
+    ReactDOM.render(
+        <React.StrictMode>
+            <Provider store={store}>
+                <App type="orders" />
+            </Provider>
+        </React.StrictMode>,
+        document.getElementById('orders-table')
+    );
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

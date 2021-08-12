@@ -12,14 +12,11 @@ class App extends React.Component {
     }
 
     render() {
-        const { airtable } = this.props.store;
-        const { organization, orders } = airtable;
-        console.log(organization, orders);
-
+        const { type } = this.props;
         return (
             <div className="App">
-                <OrganizationTable />
-                <OrdersTable />
+                {type === 'organizations' && <OrganizationTable />}
+                {type === 'orders' && <OrdersTable />}
             </div>
         );
     }

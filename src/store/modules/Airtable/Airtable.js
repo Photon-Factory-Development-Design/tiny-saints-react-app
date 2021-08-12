@@ -2,6 +2,7 @@ import { action, observable, makeObservable } from 'mobx';
 import BaseStore from '../../classes/BaseStore';
 import { fetchOrganizations, fetchOrders } from './service';
 import { serializeOrder, serializeOrganization } from './serializer';
+import { updateObjectArray } from 'common/utils/arrayUtils';
 
 class Airtable extends BaseStore {
     constructor() {
@@ -18,11 +19,16 @@ class Airtable extends BaseStore {
     }
 
     fetchOrganization() {
+        this.organization = [];
         fetchOrganizations().eachPage((records, fetchNextPage) => {
-            this.organization = [].concat(
-                this.organization || [],
-                records.map((record) => serializeOrganization(record))
-            );
+            records.forEach((record) => {
+                const newData = serializeOrganization(record);
+                this.organization = updateObjectArray(
+                    this.organization,
+                    newData.id,
+                    newData
+                );
+            });
 
             if (this.organization.length > 0) {
                 this.fetchOrders(this.organization[0].id);
@@ -31,11 +37,16 @@ class Airtable extends BaseStore {
     }
 
     fetchOrders(organization) {
+        this.orders = [];
         fetchOrders(organization).eachPage((records, fetchNextPage) => {
-            this.orders = [].concat(
-                this.orders || [],
-                records.map((record) => serializeOrder(record))
-            );
+            records.forEach((record) => {
+                const newOrder = serializeOrder(record);
+                this.orders = updateObjectArray(
+                    this.orders,
+                    newOrder.id,
+                    newOrder
+                );
+            });
         });
     }
 }
