@@ -12,8 +12,9 @@ import styles from './tableBodyStyle';
 class TableCell extends React.Component {
     render() {
         const { value, ...props } = this.props;
+        const renderValue = Array.isArray(value) ? value.join(", ") : value;
 
-        return <MuiTableCell {...props}>{value}</MuiTableCell>;
+        return <MuiTableCell {...props}>{renderValue}</MuiTableCell>;
     }
 }
 
