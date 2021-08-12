@@ -8,7 +8,7 @@ import OrganizationTable from 'components/OrganizationTable/OrganizationTable';
 class App extends React.Component {
     componentDidMount() {
         const { airtable } = this.props.store;
-        airtable.fetchOrganization();
+        airtable.fetchOrganization(window.email);
     }
 
     render() {
