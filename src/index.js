@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 import { Provider } from 'mobx-react';
 
+// window.email = 'chris@photonfactorydev.com';
 if (document.getElementById('organizations-table')) {
     ReactDOM.render(
         <React.StrictMode>

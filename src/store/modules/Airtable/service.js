@@ -2,7 +2,7 @@ import { base } from 'common/lib/airtable';
 
 export const fetchOrganizations = (user) => {
     return base('Organizations').select({
-        filterByFormula: `FIND('chris@photonfactorydev.com', {Email (from Contact)})`
+        filterByFormula: `FIND('${user}', {Email (from Contact)})`
     });
 };
 

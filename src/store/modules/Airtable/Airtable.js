@@ -18,9 +18,9 @@ class Airtable extends BaseStore {
         });
     }
 
-    fetchOrganization() {
+    fetchOrganization(email) {
         this.organization = [];
-        fetchOrganizations().eachPage((records, fetchNextPage) => {
+        fetchOrganizations(email).eachPage((records, fetchNextPage) => {
             records.forEach((record) => {
                 const newData = serializeOrganization(record);
                 this.organization = updateObjectArray(
