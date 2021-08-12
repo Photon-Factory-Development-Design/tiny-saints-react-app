@@ -1,6 +1,9 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
 
+// core components
+import OrganizationTable from 'components/OrganizationTable/OrganizationTable';
+
 class App extends React.Component {
     componentDidMount() {
         const { airtable } = this.props.store;
@@ -11,7 +14,11 @@ class App extends React.Component {
         const { organization, orders } = airtable;
         console.log(organization, orders);
 
-        return <div className="App"></div>;
+        return (
+            <div className="App">
+                <OrganizationTable />
+            </div>
+        );
     }
 }
 
