@@ -3,7 +3,12 @@ const styles = () => ({
         color: 'hsl(0,0%,30%)',
         padding: '.5rem',
         borderRadius: '6px',
-        border: '2px solid rgba(77, 77, 77, 0.3)'
+        border: '2px solid rgba(77, 77, 77, 0.3)',
+        backgroundColor: '#fff',
+        '&:hover': {
+            border: '2px solid rgba(77, 77, 77, 0.5)',
+            cursor: 'pointer'
+        }
     },
     title: {
         fontSize: '.9rem',

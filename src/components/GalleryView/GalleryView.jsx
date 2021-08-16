@@ -17,13 +17,26 @@ class GalleryView extends React.Component {
                 <Box className={classes.titleContainer}>
                     <Typography className={classes.title}>{title}</Typography>
                 </Box>
-                <Box display="flex" flexDirection="row" alignItems="center">
-                    {(values || []).map(({ label, value }) => (
-                        <Box key={label} className={classes.valueContainer}>
-                            <Box className={classes.valueLabel}>{label}</Box>
-                            <Box className={classes.value}>{value}</Box>
-                        </Box>
-                    ))}
+                <Box display="flex" flexDirection="row" alignItems="flex-start">
+                    {(values || []).map(
+                        ({ label, value, Component: ItemComponent }) => {
+                            const Component = ItemComponent || Box;
+                            return (
+                                <Box
+                                    key={label}
+                                    className={classes.valueContainer}>
+                                    <Box className={classes.valueLabel}>
+                                        {label}
+                                    </Box>
+                                    <Component
+                                        className={classes.value}
+                                        value={value}>
+                                        {value}&nbsp;
+                                    </Component>
+                                </Box>
+                            );
+                        }
+                    )}
                 </Box>
             </Box>
         );

@@ -1,9 +1,9 @@
-const organizationMap = {
+export const organizationMap = {
     name: 'Name',
     status: 'Status',
     diocese: 'DioceseText',
     n_students: 'No. of Students',
-    website: 'Website',
+    website: 'Website', 
     taxID: 'Tax ID',
     mailingAddress: 'Mailing Address',
     phoneNumber: 'Phone Number',
@@ -17,7 +17,7 @@ const organizationMap = {
     products: 'Products'
 };
 
-const orderMap = {
+export const orderMap = {
     name: 'Name',
     shopifyID: '∞ Shopify Id',
     customer: 'Customer',

@@ -1,46 +1,69 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
+
+// material ui components
+import Box from '@material-ui/core/Box';
+import withStyles from '@material-ui/core/styles/withStyles';
 
 // core components
 import GalleryView from 'components/GalleryView/GalleryView';
+import AttachmentsView from 'components/GalleryView/ViewComponents/AttachmentsView';
+
+// styles
+import styles from './organizationGalleryStyle';
+
+// icons
+import PhoneIcon from '@material-ui/icons/Phone';
+import TextFormatIcon from '@material-ui/icons/TextFormat';
+import LinkIcon from '@material-ui/icons/Link';
+import BusinessIcon from '@material-ui/icons/Business'; // mailing address
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'; // status
+import FileCopyIcon from '@material-ui/icons/FileCopy'; // file attachments
+
+const availableFields = [
+    { label: 'Phone Number', icon: PhoneIcon, id: 'phoneNumber' },
+    { label: 'Diocese', icon: TextFormatIcon, id: 'diocese' },
+    { label: 'Website', icon: LinkIcon, id: 'website' },
+    { label: 'Tax ID', icon: TextFormatIcon, id: 'taxID' },
+    { label: 'Mailing address', icon: BusinessIcon, id: 'mailingAddress' },
+    { label: 'Status', icon: ArrowDropDownIcon, id: 'status' },
+    {
+        label: 'Attachments',
+        icon: FileCopyIcon,
+        id: 'attachments',
+        Component: AttachmentsView
+    }
+];
 
 class OrganizationGallery extends React.Component {
+    generateViewValues(value) {
+        return availableFields.map((field) => ({
+            ...field,
+            value: [null, undefined].includes(value[field.id])
+                ? ''
+                : value[field.id]
+        }));
+    }
+
     render() {
+        const { classes } = this.props;
+        const { airtable } = this.props.store;
+        const { organization } = airtable;
+
+        // console.log(organization && this.generateViewValues(organization[0]));
         return (
-            <GalleryView
-                title={'St. Valentines'}
-                values={[
-                    {
-                        label: 'Start Date  12312 3123123  12312',
-                        value: '2/1/2021'
-                    },
-                    {
-                        label: 'End Date',
-                        value: '2/1/2021'
-                    },
-                    {
-                        label: 'Start Date',
-                        value: '2/1/2021'
-                    },
-                    {
-                        label: 'Start Date',
-                        value: '2/1/2021'
-                    },
-                    {
-                        label: 'Start Date',
-                        value: '2/1/2021'
-                    },
-                    {
-                        label: 'Start Date',
-                        value: '2/1/2021'
-                    },
-                    {
-                        label: 'Start Date',
-                        value: '2/1/2021'
-                    }
-                ]}
-            />
+            <Box className={classes.container}>
+                {(organization || []).map((value) => (
+                    <GalleryView
+                        title={value.name}
+                        values={this.generateViewValues(value)}
+                    />
+                ))}
+            </Box>
         );
     }
 }
 
-export default OrganizationGallery;
+export default withStyles(styles)(
+    inject('store')(observer(OrganizationGallery))
+);

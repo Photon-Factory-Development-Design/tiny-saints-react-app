@@ -16,6 +16,7 @@ import OrganizationGallery from 'containers/OrganizationGallery/OrganizationGall
 
 class App extends React.Component {
     componentDidMount() {
+        window.email = 'Chris Oberg';
         const { airtable } = this.props.store;
         airtable.fetchOrganization(window.email);
     }
