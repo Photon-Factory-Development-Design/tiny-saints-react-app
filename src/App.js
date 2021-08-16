@@ -11,6 +11,7 @@ import rootTheme from 'theme';
 import DropDown from 'components/DropDown/DropDown';
 import FilterPane from 'components/FilterPane/FilterPane';
 import OrdersTable from 'components/OrdersTable/OrdersTable';
+import OrdersGallery from 'containers/OrdersGallery/OrdersGallery';
 import OrganizationTable from 'components/OrganizationTable/OrganizationTable';
 import OrganizationGallery from 'containers/OrganizationGallery/OrganizationGallery';
 
@@ -33,6 +34,7 @@ class App extends React.Component {
                         items={[{ label: 'Name' }, { label: 'Start Date' }]}
                     />
                     <OrganizationGallery />
+                    <OrdersGallery />
                 </div>
             </ThemeProvider>
         );

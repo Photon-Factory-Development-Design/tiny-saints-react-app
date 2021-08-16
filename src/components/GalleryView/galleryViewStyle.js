@@ -27,6 +27,10 @@ const styles = () => ({
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap'
     },
+    labelIcon: {
+        fontSize: '10px',
+        paddingRight: '2px'
+    },
     value: {
         fontSize: '13px',
         fontWeight: 400,

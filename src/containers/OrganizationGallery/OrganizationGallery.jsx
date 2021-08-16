@@ -55,6 +55,7 @@ class OrganizationGallery extends React.Component {
             <Box className={classes.container}>
                 {(organization || []).map((value) => (
                     <GalleryView
+                        key={value.name}
                         title={value.name}
                         values={this.generateViewValues(value)}
                     />

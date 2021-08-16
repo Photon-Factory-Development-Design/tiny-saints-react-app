@@ -10,7 +10,7 @@ import styles from './galleryViewStyle';
 
 class GalleryView extends React.Component {
     render() {
-        const { title, values, classes } = this.props;
+        const { title, values, classes, itemWidth = 88 } = this.props;
 
         return (
             <Box className={classes.container}>
@@ -19,13 +19,27 @@ class GalleryView extends React.Component {
                 </Box>
                 <Box display="flex" flexDirection="row" alignItems="flex-start">
                     {(values || []).map(
-                        ({ label, value, Component: ItemComponent }) => {
+                        ({
+                            label,
+                            value,
+                            icon: IconComponent,
+                            Component: ItemComponent
+                        }) => {
                             const Component = ItemComponent || Box;
                             return (
                                 <Box
                                     key={label}
-                                    className={classes.valueContainer}>
+                                    className={classes.valueContainer}
+                                    style={{
+                                        width: itemWidth,
+                                        minWidth: itemWidth
+                                    }}>
                                     <Box className={classes.valueLabel}>
+                                        {IconComponent && (
+                                            <IconComponent
+                                                className={classes.labelIcon}
+                                            />
+                                        )}
                                         {label}
                                     </Box>
                                     <Component
