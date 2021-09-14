@@ -1,6 +1,11 @@
 import { action, observable, makeObservable } from 'mobx';
 import BaseStore from '../../classes/BaseStore';
-import { fetchOrganizations, fetchOrders } from './service';
+import {
+    fetchOrganizations,
+    fetchOrders,
+    createOrganization,
+    updateCustomer
+} from './service';
 import { serializeOrder, serializeOrganization } from './serializer';
 import { updateObjectArray } from 'common/utils/arrayUtils';
 
@@ -14,7 +19,9 @@ class Airtable extends BaseStore {
             organization: observable,
             orders: observable,
             fetchOrganization: action,
-            fetchOrders: action
+            fetchOrders: action,
+            createOrganization: action,
+            updateCustomer: action
         });
     }
 
@@ -48,6 +55,14 @@ class Airtable extends BaseStore {
                 );
             });
         });
+    }
+
+    createOrganization(data, callback) {
+        createOrganization(data, callback);
+    }
+
+    updateCustomer(email) {
+        updateCustomer(email);
     }
 }
 

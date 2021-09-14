@@ -28,3 +28,11 @@ export const updateObjectArray = (
 
     return newArray;
 };
+
+export const checkErrorObjValidated = (error) => {
+    const keys = Object.keys(error);
+    for (let _i = 0; _i < keys.length; _i++) {
+        if (error[keys[_i]]) return false;
+    }
+    return true;
+};

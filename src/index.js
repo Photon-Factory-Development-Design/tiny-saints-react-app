@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
 import { Provider } from 'mobx-react';
+import OrganizationForm from 'containers/OrganizationForm/OrganizationForm';
 
 // window.email = 'chris@photonfactorydev.com';
 if (document.getElementById('organizations-table')) {
@@ -27,7 +28,16 @@ if (document.getElementById('orders-table')) {
         document.getElementById('orders-table')
     );
 }
-
+if (document.getElementById('organization-form')) {
+    ReactDOM.render(
+        <React.StrictMode>
+            <Provider store={store}>
+                <OrganizationForm type="orders" />
+            </Provider>
+        </React.StrictMode>,
+        document.getElementById('organization-form')
+    );
+}
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
