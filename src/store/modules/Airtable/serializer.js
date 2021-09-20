@@ -1,20 +1,21 @@
 export const organizationMap = {
-    name: 'Name',
-    status: 'Status',
-    diocese: 'DioceseText',
-    n_students: 'No. of Students',
-    website: 'Website', 
-    taxID: 'Tax ID',
-    mailingAddress: 'Mailing Address',
-    phoneNumber: 'Phone Number',
-    students: 'Students',
-    orders: 'Orders',
-    totalOrders: 'Total (from Orders)',
-    attachments: 'Attachments',
-    contact: 'Contact',
-    emailFromContact: 'Email (from Contact)',
-    nameFromContact: 'Name (from Contact)',
-    products: 'Products'
+    name: 'Organization Name',
+    // status: 'Status',
+    // diocese: 'DioceseText',
+    // n_students: 'No. of Students',
+    // website: 'Website', 
+    // taxID: 'Tax ID',
+    // mailingAddress: 'Mailing Address',
+    // phoneNumber: 'Phone Number',
+    // students: 'Students',
+    // orders: 'Orders',
+    // totalOrders: 'Total (from Orders)',
+    // attachments: 'Attachments',
+    // contact: 'Contact',
+    // emailFromContact: 'Email (from Contact)',
+    // nameFromContact: 'Name (from Contact)',
+    // products: 'Products'
+
 };
 
 export const orderMap = {

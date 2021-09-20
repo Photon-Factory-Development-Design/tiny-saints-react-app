@@ -15,13 +15,16 @@ class Airtable extends BaseStore {
 
         this.organization = null;
         this.orders = null;
+        this.organizations = null;
         makeObservable(this, {
             organization: observable,
             orders: observable,
+            organizations: observable,
             fetchOrganization: action,
             fetchOrders: action,
             createOrganization: action,
-            updateCustomer: action
+            updateCustomer: action,
+            fetchAllOrganizations: action
         });
     }
 
@@ -52,6 +55,21 @@ class Airtable extends BaseStore {
                     this.orders,
                     newOrder.id,
                     newOrder
+                );
+            });
+        });
+    }
+
+    fetchAllOrganizations() {
+        this.organizations = [];
+        fetchOrganizations().eachPage((records, fetchNextPage) => {
+            console.log(records);
+            records.forEach((record) => {
+                const newData = serializeOrganization(record);
+                this.organizations = updateObjectArray(
+                    this.organizations,
+                    newData.id,
+                    newData
                 );
             });
         });
