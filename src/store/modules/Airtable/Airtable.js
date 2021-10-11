@@ -29,20 +29,12 @@ class Airtable extends BaseStore {
     }
 
     fetchOrganization(email) {
-        this.organization = [];
+        this.organization = null;
         fetchOrganizations(email).eachPage((records, fetchNextPage) => {
             records.forEach((record) => {
                 const newData = serializeOrganization(record);
-                this.organization = updateObjectArray(
-                    this.organization,
-                    newData.id,
-                    newData
-                );
+                this.organization = newData;
             });
-
-            if (this.organization.length > 0) {
-                this.fetchOrders(this.organization[0].id);
-            }
         });
     }
 

@@ -1,10 +1,10 @@
 import { base } from 'common/lib/airtable';
 
-export const fetchOrganizations = (user) => {
+export const fetchOrganizations = (email) => {
     let params = {};
-    if (user) {
+    if (email) {
         params = {
-            filterByFormula: `FIND('${user}', {Email})`
+            filterByFormula: `FIND('${email}', {Email})`
         };
     }
     return base('Organization').select(params);
