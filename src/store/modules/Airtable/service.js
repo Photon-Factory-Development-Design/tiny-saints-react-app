@@ -4,7 +4,7 @@ export const fetchOrganizations = (user) => {
     let params = {};
     if (user) {
         params = {
-            filterByFormula: `FIND('${user}', {Contact})`
+            filterByFormula: `FIND('${user}', {Email})`
         };
     }
     return base('Organization').select(params);
@@ -12,7 +12,7 @@ export const fetchOrganizations = (user) => {
 
 export const fetchOrders = (organization) => {
     return base('Orders').select({
-        filterByFormula: `FIND('${organization}', {Organizations Record IDs})`
+        filterByFormula: `FIND('${organization}', {Organization})`
     });
 };
 

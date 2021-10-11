@@ -7,6 +7,7 @@ import store from './store';
 import { Provider } from 'mobx-react';
 import OrganizationForm from 'containers/OrganizationForm/OrganizationForm';
 import OrganizationDropDown from 'containers/OrganziationDropDown/OrganizationDropDown';
+import OrgOrdersList from 'containers/OrgOrdersList/OrgOrdersList';
 
 // window.email = 'chris@photonfactorydev.com';
 if (document.getElementById('organizations-table')) {
@@ -47,6 +48,16 @@ if (document.getElementById('organizations-dropdown')) {
             </Provider>
         </React.StrictMode>,
         document.getElementById('organizations-dropdown')
+    );
+}
+if (document.getElementById('org-orders-list')) {
+    ReactDOM.render(
+        <React.StrictMode>
+            <Provider store={store}>
+                <OrgOrdersList />
+            </Provider>
+        </React.StrictMode>,
+        document.getElementById('org-orders-list')
     );
 }
 // If you want to start measuring performance in your app, pass a function

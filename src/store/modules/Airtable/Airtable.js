@@ -46,17 +46,32 @@ class Airtable extends BaseStore {
         });
     }
 
-    fetchOrders(organization) {
+    fetchOrders(email) {
         this.orders = [];
-        fetchOrders(organization).eachPage((records, fetchNextPage) => {
+        this.organization = [];
+        fetchOrganizations(email).eachPage((records) => {
+            console.log(records);
             records.forEach((record) => {
-                const newOrder = serializeOrder(record);
-                this.orders = updateObjectArray(
-                    this.orders,
-                    newOrder.id,
-                    newOrder
+                const newData = serializeOrganization(record);
+                this.organization = updateObjectArray(
+                    this.organization,
+                    newData.id,
+                    newData
                 );
             });
+
+            if (this.organization.length > 0) {
+                fetchOrders(this.organization[0].name).eachPage((records) => {
+                    records.forEach((record) => {
+                        const newOrder = serializeOrder(record);
+                        this.orders = updateObjectArray(
+                            this.orders,
+                            newOrder.id,
+                            newOrder
+                        );
+                    });
+                });
+            }
         });
     }
 
