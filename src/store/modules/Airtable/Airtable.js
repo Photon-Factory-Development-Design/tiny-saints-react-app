@@ -40,20 +40,16 @@ class Airtable extends BaseStore {
 
     fetchOrders(email) {
         this.orders = [];
-        this.organization = [];
+        this.organization = null;
         fetchOrganizations(email).eachPage((records) => {
             console.log(records);
             records.forEach((record) => {
                 const newData = serializeOrganization(record);
-                this.organization = updateObjectArray(
-                    this.organization,
-                    newData.id,
-                    newData
-                );
+                this.organization = newData;
             });
 
-            if (this.organization.length > 0) {
-                fetchOrders(this.organization[0].name).eachPage((records) => {
+            if (this.organization) {
+                fetchOrders(this.organization.name).eachPage((records) => {
                     records.forEach((record) => {
                         const newOrder = serializeOrder(record);
                         this.orders = updateObjectArray(

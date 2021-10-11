@@ -1,0 +1,50 @@
+.fundraiser-toolkit {
+    color: #5F5F5F;
+
+    &__title {
+        font-weight: 900;
+        text-align: center;
+    }
+
+    &__summary {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        margin-top: 1.5rem;
+
+        &__item {
+            flex: 1;
+
+            &__title {
+                font-weight: 900;
+                margin-bottom: 1.2rem;
+                text-align: center;
+            }
+
+            &>h6 {
+                color: #979797;
+                text-align: center;
+                font-size: 15px;
+                font-weight: 300;
+            }
+        }
+    }
+
+    & h6 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+
+    &__table {
+        margin-top: 40px;
+
+        & th{
+            text-align: center;
+            color: #5F5F5F;
+            font-weight: 900;
+        }
+        & td {
+            text-align: center;
+        }
+    }
+}

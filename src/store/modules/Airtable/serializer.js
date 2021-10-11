@@ -1,12 +1,16 @@
 export const organizationMap = {
-    name: 'Organization Name'
+    name: 'Organization Name',
+    phoneNumber: 'Phone Number',
+    email: 'Email',
+    address: 'Address',
+    taxID: 'TAX ID'
 };
 
 export const orderMap = {
     name: 'Name',
     createdAt: 'Created At',
-    financialStatus: "Financial Status",
-    total: "Total"
+    financialStatus: 'Financial Status',
+    total: 'Total'
 };
 
 const serializer = (map, record) => {
