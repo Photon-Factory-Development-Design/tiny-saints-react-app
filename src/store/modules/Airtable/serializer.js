@@ -10,7 +10,14 @@ export const orderMap = {
     name: 'Name',
     createdAt: 'Created At',
     financialStatus: 'Financial Status',
-    total: 'Total'
+    total: 'Total',
+    customer: 'Customer'
+};
+
+export const customerMap = {
+    email: 'Email',
+    firstName: 'First Name',
+    lastName: 'Last Name'
 };
 
 const serializer = (map, record) => {
@@ -26,3 +33,5 @@ export const serializeOrganization = (record) =>
     serializer(organizationMap, record);
 
 export const serializeOrder = (record) => serializer(orderMap, record);
+
+export const serializeCustomer = (record) => serializer(customerMap, record);

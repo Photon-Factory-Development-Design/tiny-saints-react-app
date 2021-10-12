@@ -3,10 +3,16 @@ import BaseStore from '../../classes/BaseStore';
 import {
     fetchOrganizations,
     fetchOrders,
+    fetchDetailOrder,
     createOrganization,
-    updateCustomer
+    updateCustomer,
+    fetchCustomer
 } from './service';
-import { serializeOrder, serializeOrganization } from './serializer';
+import {
+    serializeOrder,
+    serializeOrganization,
+    serializeCustomer
+} from './serializer';
 import { updateObjectArray } from 'common/utils/arrayUtils';
 
 class Airtable extends BaseStore {
@@ -16,15 +22,22 @@ class Airtable extends BaseStore {
         this.organization = null;
         this.orders = null;
         this.organizations = null;
+        this._detailOrder = null;
+        this._customer = null;
+        this._orderCustomer = null;
+
         makeObservable(this, {
             organization: observable,
             orders: observable,
             organizations: observable,
+            _detailOrder: observable,
+            _orderCustomer: observable,
             fetchOrganization: action,
             fetchOrders: action,
             createOrganization: action,
             updateCustomer: action,
-            fetchAllOrganizations: action
+            fetchAllOrganizations: action,
+            fetchDetailOrder: action
         });
     }
 
@@ -75,6 +88,20 @@ class Airtable extends BaseStore {
                     newData
                 );
             });
+        });
+    }
+
+    fetchDetailOrder(number) {
+        this._detailOrder = null;
+        fetchDetailOrder(number, (err, record) => {
+            this._detailOrder = serializeOrder(record);
+        });
+    }
+
+    fetchCustomer(id) {
+        this._orderCustomer = null;
+        fetchCustomer(id, (err, record) => {
+            this._orderCustomer = serializeCustomer(record);
         });
     }
 

@@ -16,6 +16,10 @@ export const fetchOrders = (organization) => {
     });
 };
 
+export const fetchDetailOrder = (id, callback) => {
+    return base('Orders').find(id, callback);
+};
+
 export const createOrganization = (data, callback) => {
     base('Organization').create(
         data,
@@ -69,4 +73,8 @@ export const updateCustomer = (email, callback) => {
                 }
             }
         );
+};
+
+export const fetchCustomer = (id, callback) => {
+    return base('Orders').find(id, callback);
 };
